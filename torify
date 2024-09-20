@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Automatically detect the full path of torify.so for Torify
+export LD_PRELOAD="$HOME/Torify/torify.so"
+
+# Check if the library exists
+if [ ! -f "$LD_PRELOAD" ]; then
+    echo "[!] Error: The shared library '$LD_PRELOAD' does not exist."
+    echo "[!] Please ensure that Torify is properly installed."
+    exit 1
+fi
+
+# Execute the command passed as arguments with Torify
+echo "[+] Running command with Torify..."
+"${@}"
+
+# Unset LD_PRELOAD after execution
+unset LD_PRELOAD
+
+echo "[+] Command executed successfully with Torify."
