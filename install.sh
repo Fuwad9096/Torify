@@ -6,10 +6,10 @@ SRC_FILE="torify.c"
 INSTALL_DIR="$HOME/Torify"
 OUTPUT_BIN="torify"
 
-# Create the installation directory if it doesn't exist
+# Creating the installation directory if it doesn't exist
 mkdir -p "$INSTALL_DIR"
 
-# Compile the shared library (assuming you have a torify.c file)
+# Compiling the shared library
 gcc -fPIC -shared -ldl -D_GNU_SOURCE "$SRC_FILE" -o "$INSTALL_DIR/$LIB_NAME"
 
 # Check if compilation was successful
